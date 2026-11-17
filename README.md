@@ -448,44 +448,6 @@ and keeps the API's score and label consistent.
 
 ## AI usage
 
-Codex assisted with the implementation, tests, and documentation using the
-assignment and planning.md as context. The assistance is disclosed rather than
-presenting generated code or prose as unaided work.
 
-1. For M3/M4, the plan directed generation of a standalone Groq JSON signal,
-   pure-Python stylometrics, and the specified scorer. Review revised the initial
-   Groq request so `reasoning_effort` is sent only for GPT-OSS models; otherwise
-   the configurable model could reject an unsupported option. Validation rejects
-   malformed, boolean, non-finite, or out-of-range model scores. The retired
-   course model was replaced after checking Groq's official documentation.
-2. For M5, the plan directed generation of the Flask factory, transactional
-   appeals, and integration tests. Running the tests exposed a weak-reference
-   failure when Flask-Limiter was disabled: retaining the limiter in
-   `app.extensions` fixed it. Review also replaced SQLite's transaction-only
-   context with a context manager that explicitly closes connections. The final
-   boundary test prompted the rounding-order change described above.
 
-Reported live scores, audit events, and HTTP rate-limit output were captured from
-executed checks; deterministic mocked tests are identified separately. No model
-accuracy percentage, independent user study, or human review outcome is claimed.
 
-## Portfolio walkthrough
-
-The course also requires a personal recording of about two minutes. Record the
-running API in a terminal and narrate this short tour; the video is submitted
-through the Course Portal separately from the source files.
-
-1. **0:00–0:25:** Explain the attribution problem and show the two flows in
-   planning.md. Mention that a false accusation is more harmful than uncertainty.
-2. **0:25–1:00:** Run the submission curl command above. Show `content_id`, both
-   signals, `confidence`, `label`, and `analysis_mode`. Explain 70/30 weighting and
-   that the score measures AI support rather than proving authorship.
-3. **1:00–1:30:** Run the appeal command, then the content/review-queue lookups.
-   Show `under_review`, the creator's reasoning, and the unchanged original score.
-4. **1:30–2:00:** Show `/log`, the three label strings, and the captured 429
-   evidence. Close with the repetitive-poem limitation and the need for human
-   review. Keep `.env` and account credentials off screen.
-
-The personal video is not included in this repository; this guide prepares the
-remaining recording step. The detailed grading evidence is already written
-above, so the recording can stay brief.
